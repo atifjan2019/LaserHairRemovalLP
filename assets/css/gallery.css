@@ -464,3 +464,10 @@
 .symbol-section-out[data-css="tve-u-16eac5b5a3a"] {
     background-color: #095151 !important;
 }
+
+.google-verified-text {
+    font-size: 29px !important;
+    font-weight: 700 !important;
+    font-family: 'Rubik', sans-serif !important;
+    color: #095151 !important;
+}
