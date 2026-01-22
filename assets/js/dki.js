@@ -12,8 +12,8 @@
         const upperName = cityName.toUpperCase();
 
         // 1. Update Document Title
-        document.title = document.title.replace(/Romford/g, cityName);
-        document.title = document.title.replace(/ROMFORD/g, upperName);
+        document.title = document.title.replace(/Hornchurch/g, cityName);
+        document.title = document.title.replace(/HORNCHURCH/g, upperName);
 
         // 2. Update Body Text
         // We use a TreeWalker to safely replace text only in text nodes
@@ -36,20 +36,20 @@
         const nodesToUpdate = [];
         let node;
         while (node = walker.nextNode()) {
-            if (node.textContent.includes('Romford') || node.textContent.includes('ROMFORD')) {
+            if (node.textContent.includes('Hornchurch') || node.textContent.includes('HORNCHURCH')) {
                 nodesToUpdate.push(node);
             }
         }
 
         nodesToUpdate.forEach(node => {
-            node.textContent = node.textContent.replace(/Romford/g, cityName);
-            node.textContent = node.textContent.replace(/ROMFORD/g, upperName);
+            node.textContent = node.textContent.replace(/Hornchurch/g, cityName);
+            node.textContent = node.textContent.replace(/HORNCHURCH/g, upperName);
         });
 
         // 3. Update Social Proof Data (optional but recommended for consistency)
         if (window.js_socialproof_vars && window.js_socialproof_vars.popup_data) {
             window.js_socialproof_vars.popup_data.forEach(item => {
-                if (item.location && item.location.city === 'Romford') {
+                if (item.location && item.location.city === 'Hornchurch') {
                     item.location.city = cityName;
                 }
             });
