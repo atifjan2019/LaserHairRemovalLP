@@ -279,9 +279,12 @@
 .machine-collage-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(10, 40px);
+    grid-template-rows: repeat(10, 60px);
+    /* Increased from 40px for better visibility */
     gap: 15px;
     width: 100%;
+    min-height: 500px;
+    /* Force a minimum height */
 }
 
 .collage-item {
@@ -356,6 +359,8 @@
         padding: 0px !important;
         margin-top: 30px !important;
         -webkit-overflow-scrolling: touch !important;
+        min-height: 350px !important;
+        /* Fix for the 5px height issue on mobile */
     }
 
     .machine-collage-grid::-webkit-scrollbar {
@@ -365,11 +370,14 @@
     .collage-item {
         flex: 0 0 100% !important;
         width: 100% !important;
+        min-width: 100% !important;
         scroll-snap-align: center !important;
         clip-path: none !important;
-        aspect-ratio: 1 / 1 !important;
+        aspect-ratio: 4 / 3 !important;
+        /* Explicit ratio for better mobile viewing */
         border-radius: 10px !important;
-        /* Updated to 10px as requested */
+        height: auto !important;
+        min-height: 300px !important;
     }
 }
 
@@ -402,16 +410,19 @@
 }
 
 .sticky-call-btn {
-    background: #095151;
-    color: #fff !important;
+    background: #ffd100;
+    /* Yellow to match site theme */
+    color: #111 !important;
+    /* Dark text for contrast */
     text-decoration: none !important;
     padding: 16px 20px;
     /* Increased padding from 12px to 16px */
     border-radius: 50px;
-    font-weight: 700;
+    font-weight: 800;
+    /* Extra bold for visibility */
     font-family: 'Rubik', sans-serif;
     font-size: 18px;
-    box-shadow: 0 4px 10px rgba(9, 81, 81, 0.2);
+    box-shadow: 0 4px 12px rgba(255, 209, 0, 0.4);
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
@@ -421,6 +432,14 @@
     max-width: 1200px;
     /* Max width for desktop readability */
     box-sizing: border-box;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.sticky-call-btn:hover {
+    background: #f4ba08;
+    /* Darker yellow on hover */
+    transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {
