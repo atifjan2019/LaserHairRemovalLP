@@ -6012,45 +6012,64 @@
 								types.
 							</p>
 
-							<div class="mobile-tech-item" style="margin-bottom: 30px;">
-								<h3
-									style="font-size: 18px; font-weight: 700; margin-bottom: 10px; color: #095151; font-family: 'Rubik', sans-serif;">
-									01 &nbsp; Quick, effanective sessions</h3>
-								<p
-									style="font-size: 15px; color: #444; line-height: 1.5; font-family: 'Rubik', sans-serif;">
-									The Alma soprano targets the hair follicles at the root of the hair. Laser light
-									energy travels down the hair and transforms to heat, causing damage to the hair
-									follicle to prevent the hair regrowth over the course of your sessions.</p>
-							</div>
+							<div class="mobile-tech-accordion">
+								<div class="mobile-tech-item active">
+									<div class="accordion-header">
+										<h3 style="font-weight: 700; color: #095151; font-family: 'Rubik', sans-serif;">
+											01 &nbsp; Quick, effective sessions</h3>
+										<div class="accordion-icon"></div>
+									</div>
+									<div class="accordion-content">
+										<p
+											style="font-size: 15px; color: #444; line-height: 1.5; font-family: 'Rubik', sans-serif;">
+											The Alma soprano targets the hair follicles at the root of the hair. Laser
+											light energy travels down the hair and transforms to heat, causing damage to
+											the hair follicle to prevent the hair regrowth over the course of your
+											sessions.</p>
+									</div>
+								</div>
 
-							<div class="mobile-tech-item" style="margin-bottom: 30px;">
-								<h3
-									style="font-size: 18px; font-weight: 700; margin-bottom: 10px; color: #095151; font-family: 'Rubik', sans-serif;">
-									02 &nbsp; Suitable for all skin tones and types</h3>
-								<p
-									style="font-size: 15px; color: #444; line-height: 1.5; font-family: 'Rubik', sans-serif;">
-									The lasers use two different wavelengths of light, Alexandrite and ND:YAG, allowing
-									us to treat all skin tones.</p>
-							</div>
+								<div class="mobile-tech-item">
+									<div class="accordion-header">
+										<h3 style="font-weight: 700; color: #095151; font-family: 'Rubik', sans-serif;">
+											02 &nbsp; Suitable for all skin tones and types</h3>
+										<div class="accordion-icon"></div>
+									</div>
+									<div class="accordion-content">
+										<p
+											style="font-size: 15px; color: #444; line-height: 1.5; font-family: 'Rubik', sans-serif;">
+											The lasers use two different wavelengths of light, Alexandrite and ND:YAG,
+											allowing us to treat all skin tones.</p>
+									</div>
+								</div>
 
-							<div class="mobile-tech-item" style="margin-bottom: 30px;">
-								<h3
-									style="font-size: 18px; font-weight: 700; margin-bottom: 10px; color: #095151; font-family: 'Rubik', sans-serif;">
-									03 &nbsp; Laser hair removal with very low pain</h3>
-								<p
-									style="font-size: 15px; color: #444; line-height: 1.5; font-family: 'Rubik', sans-serif;">
-									Laser hair removal is only performed by highly qualified and experienced therapists,
-									meaning you’re in safe hands here at DNA.</p>
-							</div>
+								<div class="mobile-tech-item">
+									<div class="accordion-header">
+										<h3 style="font-weight: 700; color: #095151; font-family: 'Rubik', sans-serif;">
+											03 &nbsp; Laser hair removal with very low pain</h3>
+										<div class="accordion-icon"></div>
+									</div>
+									<div class="accordion-content">
+										<p
+											style="font-size: 15px; color: #444; line-height: 1.5; font-family: 'Rubik', sans-serif;">
+											Laser hair removal is only performed by highly qualified and experienced
+											therapists, meaning you’re in safe hands here at DNA.</p>
+									</div>
+								</div>
 
-							<div class="mobile-tech-item" style="margin-bottom: 30px;">
-								<h3
-									style="font-size: 18px; font-weight: 700; margin-bottom: 10px; color: #095151; font-family: 'Rubik', sans-serif;">
-									04 &nbsp; Performed by experienced therapists</h3>
-								<p
-									style="font-size: 15px; color: #444; line-height: 1.5; font-family: 'Rubik', sans-serif;">
-									Laser hair removal is only performed by highly qualified and experienced therapists,
-									meaning you’re in safe hands here at DNA.</p>
+								<div class="mobile-tech-item">
+									<div class="accordion-header">
+										<h3 style="font-weight: 700; color: #095151; font-family: 'Rubik', sans-serif;">
+											04 &nbsp; Performed by experienced therapists</h3>
+										<div class="accordion-icon"></div>
+									</div>
+									<div class="accordion-content">
+										<p
+											style="font-size: 15px; color: #444; line-height: 1.5; font-family: 'Rubik', sans-serif;">
+											Laser hair removal is only performed by highly qualified and experienced
+											therapists, meaning you’re in safe hands here at DNA.</p>
+									</div>
+								</div>
 							</div>
 
 							<div style="text-align: center; margin-top: 20px;">
@@ -7792,6 +7811,25 @@
 					});
 				}, 4000);
 			}
+			// Mobile Accordion Logic
+			const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+			accordionHeaders.forEach(header => {
+				header.addEventListener('click', function () {
+					const item = this.parentElement;
+					const isActive = item.classList.contains('active');
+
+					// Close all other items
+					document.querySelectorAll('.mobile-tech-item').forEach(otherItem => {
+						otherItem.classList.remove('active');
+					});
+
+					// Toggle current item
+					if (!isActive) {
+						item.classList.add('active');
+					}
+				});
+			});
 		});
 	</script>
 </body>
