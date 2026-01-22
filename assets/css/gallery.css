@@ -410,19 +410,16 @@
 }
 
 .sticky-call-btn {
-    background: #ffd100;
-    /* Yellow to match site theme */
-    color: #111 !important;
-    /* Dark text for contrast */
+    background: #095151;
+    /* Medical green to match header buttons */
+    color: #fff !important;
     text-decoration: none !important;
     padding: 16px 20px;
-    /* Increased padding from 12px to 16px */
     border-radius: 50px;
-    font-weight: 800;
-    /* Extra bold for visibility */
+    font-weight: 700;
     font-family: 'Rubik', sans-serif;
     font-size: 18px;
-    box-shadow: 0 4px 12px rgba(255, 209, 0, 0.4);
+    box-shadow: 0 4px 10px rgba(9, 81, 81, 0.2);
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
@@ -430,15 +427,14 @@
     gap: 12px;
     width: 100%;
     max-width: 1200px;
-    /* Max width for desktop readability */
     box-sizing: border-box;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
 .sticky-call-btn:hover {
-    background: #f4ba08;
-    /* Darker yellow on hover */
+    background: #074040;
+    /* Darker green on hover */
     transform: translateY(-2px);
 }
 
