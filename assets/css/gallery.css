@@ -258,12 +258,11 @@
 .tech-heading {
     font-family: 'Rubik', sans-serif !important;
     font-size: 48px !important;
-    line-height: 62.4px !important;
+    line-height: 1.2 !important;
     color: #095151 !important;
     font-weight: 700 !important;
     margin-bottom: 25px !important;
-    text-align: center !important;
-    /* Centered as requested */
+    text-align: left !important;
 }
 
 .tech-description {
@@ -271,20 +270,22 @@
     line-height: 1.7 !important;
     color: #4a4a4a !important;
     margin-bottom: 20px !important;
-    text-align: center !important;
-    /* Centered as requested */
+    text-align: left !important;
 }
 
 /* Diagonal Mosaic Collage */
 .machine-collage-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(10, 60px);
-    /* Increased from 40px for better visibility */
-    gap: 15px;
+    grid-template-rows: repeat(10, 40px);
+    /* Reduced for desktop to keep it compact */
+    gap: 12px;
     width: 100%;
-    min-height: 500px;
-    /* Force a minimum height */
+    max-width: 450px;
+    /* Smaller desktop collage */
+    margin-left: auto;
+    /* Push to right */
+    min-height: 350px;
 }
 
 .collage-item {
@@ -387,7 +388,6 @@
 .sticky-header-btn {
     position: fixed;
     top: -120px;
-    /* Slightly more hidden to avoid shadows */
     left: 0;
     right: 0;
     width: 100%;
@@ -395,14 +395,13 @@
     background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(10px);
     padding: 25px 20px;
-    /* Increased padding (+10px top/bottom = +20px height) */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    display: flex;
+    display: none;
+    /* Hidden on desktop */
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    /* Crucial for responsiveness with padding */
 }
 
 .sticky-header-btn.visible {
@@ -440,12 +439,28 @@
 
 @media (max-width: 768px) {
     .sticky-header-btn {
+        display: flex;
+        /* Show only on mobile */
         padding: 20px 20px;
-        /* More substantial on mobile */
     }
 
     .sticky-call-btn {
         font-size: 16px;
         padding: 14px 20px;
     }
+}
+
+/* Full Width Footer */
+[data-css="tve-u-16eac5b5a3a"] {
+    position: relative !important;
+    left: 50% !important;
+    right: 50% !important;
+    margin-left: -50vw !important;
+    margin-right: -50vw !important;
+    width: 100vw !important;
+    box-sizing: border-box !important;
+}
+
+.symbol-section-out[data-css="tve-u-16eac5b5a3a"] {
+    background-color: #095151 !important;
 }
