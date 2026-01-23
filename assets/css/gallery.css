@@ -73,6 +73,11 @@
 
 @media (max-width: 768px) {
 
+    /* Remove gallery container padding on mobile */
+    .custom-gallery {
+        padding: 0 !important;
+    }
+
     /* Gallery as a swipable slider on mobile */
     .gallery-grid {
         display: flex !important;
@@ -88,7 +93,7 @@
         display: none !important;
     }
 
-    /* Show 1 image at a time with 250px height */
+    /* Show 1 image at a time with 320px height */
     .gallery-item {
         flex: 0 0 100% !important;
         width: 100% !important;
@@ -96,8 +101,8 @@
         border-radius: 10px !important;
         padding: 5px !important;
         aspect-ratio: unset !important;
-        height: 250px !important;
-        min-height: 250px !important;
+        height: 320px !important;
+        min-height: 320px !important;
     }
 
     .gallery-item img {
@@ -114,7 +119,8 @@
         display: flex;
         justify-content: center;
         gap: 20px;
-        margin-top: 15px;
+        margin-top: 10px;
+        margin-bottom: 0;
     }
 
     /* Gallery Navigation Arrows */
