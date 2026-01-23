@@ -6,15 +6,15 @@
 
         console.log("DKI: locId =", locId);
 
-        if (!locId || typeof LOCATIONS === 'undefined') {
-            console.log("DKI: Missing locId or LOCATIONS data.");
-            return;
-        }
-
-        const cityName = LOCATIONS[locId];
-        if (!cityName) {
-            console.log("DKI: No city found for ID", locId);
-            return;
+        const defaultCityName = 'London';
+        const hasLocations = (typeof LOCATIONS !== 'undefined');
+        const cityName = (locId && hasLocations && LOCATIONS[locId]) ? LOCATIONS[locId] : defaultCityName;
+        if (!locId) {
+            console.log("DKI: No locId provided; defaulting to", cityName);
+        } else if (!hasLocations) {
+            console.log("DKI: Missing LOCATIONS data; defaulting to", cityName);
+        } else if (!LOCATIONS[locId]) {
+            console.log("DKI: No city found for ID", locId, "- defaulting to", cityName);
         }
 
         console.log("DKI: Target city =", cityName);
