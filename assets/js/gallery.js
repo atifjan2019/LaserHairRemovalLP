@@ -174,11 +174,79 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Initialize only if mobile
     if (window.matchMedia("(max-width: 768px)").matches) {
-        setupSliderIndicators('.gallery-grid', '.custom-gallery', 2);
+        setupSliderIndicators('.gallery-grid', '.custom-gallery', 1);
         setupSliderIndicators('.mobile-review-slider', '.mobile-reviews-section', 1);
         
         // Also handle the testimonial slider in index.html if it exists
         setupSliderIndicators('[data-css="tve-u-16c38bf81d6"]', '.desktop-reviews-section', 1);
+
+        // Add navigation arrows to gallery
+        setupGalleryArrows();
+    }
+
+    function setupGalleryArrows() {
+        const gallery = document.querySelector('.custom-gallery');
+        const galleryGrid = document.querySelector('.gallery-grid');
+        if (!gallery || !galleryGrid) return;
+
+        // Create arrow container above gallery
+        const navContainer = document.createElement('div');
+        navContainer.className = 'gallery-nav-container';
+
+        // Create prev arrow
+        const prevArrow = document.createElement('button');
+        prevArrow.className = 'gallery-nav-arrow gallery-nav-prev';
+        prevArrow.innerHTML = '<svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>';
+        prevArrow.setAttribute('aria-label', 'Previous image');
+
+        // Create next arrow
+        const nextArrow = document.createElement('button');
+        nextArrow.className = 'gallery-nav-arrow gallery-nav-next';
+        nextArrow.innerHTML = '<svg viewBox="0 0 24 24"><path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg>';
+        nextArrow.setAttribute('aria-label', 'Next image');
+
+        navContainer.appendChild(prevArrow);
+        navContainer.appendChild(nextArrow);
+
+        // Wrap gallery-grid in a wrapper
+        const wrapper = document.createElement('div');
+        wrapper.className = 'gallery-wrapper';
+        galleryGrid.parentNode.insertBefore(wrapper, galleryGrid);
+        wrapper.appendChild(galleryGrid);
+
+        // Insert arrow container after gallery grid (below)
+        wrapper.parentNode.insertBefore(navContainer, wrapper.nextSibling);
+
+        const items = galleryGrid.querySelectorAll('.gallery-item');
+        let currentIndex = 0;
+
+        function scrollToIndex(index) {
+            if (index < 0) index = items.length - 1;
+            if (index >= items.length) index = 0;
+            currentIndex = index;
+            items[index].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+        }
+
+        prevArrow.addEventListener('click', (e) => {
+            e.preventDefault();
+            scrollToIndex(currentIndex - 1);
+        });
+
+        nextArrow.addEventListener('click', (e) => {
+            e.preventDefault();
+            scrollToIndex(currentIndex + 1);
+        });
+
+        // Update currentIndex on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    currentIndex = Array.from(items).indexOf(entry.target);
+                }
+            });
+        }, { root: galleryGrid, threshold: 0.6 });
+
+        items.forEach(item => observer.observe(item));
     }
 });
 

@@ -88,15 +88,63 @@
         display: none !important;
     }
 
-    /* Show 2 images at once (exactly 50% width) */
+    /* Show 1 image at a time with 250px height */
     .gallery-item {
-        flex: 0 0 50% !important;
-        width: 50% !important;
+        flex: 0 0 100% !important;
+        width: 100% !important;
         scroll-snap-align: start !important;
-        border-radius: 8px !important;
+        border-radius: 10px !important;
         padding: 5px !important;
-        aspect-ratio: 4/3 !important;
-        min-height: 150px !important;
+        aspect-ratio: unset !important;
+        height: 250px !important;
+        min-height: 250px !important;
+    }
+
+    .gallery-item img {
+        border-radius: 10px !important;
+    }
+
+    /* Hide indicator dots on mobile */
+    .slider-indicator {
+        display: none !important;
+    }
+
+    /* Gallery Navigation Arrows Container - Below Gallery */
+    .gallery-nav-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 15px;
+    }
+
+    /* Gallery Navigation Arrows */
+    .gallery-nav-arrow {
+        width: 40px;
+        height: 40px;
+        background: #DAA520;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        transition: background 0.3s ease;
+    }
+
+    .gallery-nav-arrow:hover {
+        background: #B8860B;
+    }
+
+    .gallery-nav-arrow svg {
+        width: 20px;
+        height: 20px;
+        fill: black;
+    }
+
+    .gallery-wrapper {
+        position: relative;
     }
 }
 
