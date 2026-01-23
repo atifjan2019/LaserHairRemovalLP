@@ -21,8 +21,8 @@
         const upperName = cityName.toUpperCase();
 
         // 1. Update Document Title
-        document.title = document.title.replace(/Hornchurch/g, cityName);
-        document.title = document.title.replace(/HORNCHURCH/g, upperName);
+        document.title = document.title.replace(/Hornchurch|Marylebone/g, cityName);
+        document.title = document.title.replace(/HORNCHURCH|MARYLEBONE/g, upperName);
 
         // 2. Update Body Text
         const walker = document.createTreeWalker(
@@ -43,7 +43,12 @@
         const nodesToUpdate = [];
         let node;
         while (node = walker.nextNode()) {
-            if (node.textContent.includes('Hornchurch') || node.textContent.includes('HORNCHURCH')) {
+            if (
+                node.textContent.includes('Hornchurch') ||
+                node.textContent.includes('HORNCHURCH') ||
+                node.textContent.includes('Marylebone') ||
+                node.textContent.includes('MARYLEBONE')
+            ) {
                 nodesToUpdate.push(node);
             }
         }
@@ -51,14 +56,14 @@
         console.log("DKI: Found", nodesToUpdate.length, "text nodes to update.");
 
         nodesToUpdate.forEach(node => {
-            node.textContent = node.textContent.replace(/Hornchurch/g, cityName);
-            node.textContent = node.textContent.replace(/HORNCHURCH/g, upperName);
+            node.textContent = node.textContent.replace(/Hornchurch|Marylebone/g, cityName);
+            node.textContent = node.textContent.replace(/HORNCHURCH|MARYLEBONE/g, upperName);
         });
 
         // 3. Update Social Proof Data
         if (window.js_socialproof_vars && window.js_socialproof_vars.popup_data) {
             window.js_socialproof_vars.popup_data.forEach(item => {
-                if (item.location && item.location.city === 'Hornchurch') {
+                if (item.location && (item.location.city === 'Hornchurch' || item.location.city === 'Marylebone')) {
                     item.location.city = cityName;
                 }
             });
