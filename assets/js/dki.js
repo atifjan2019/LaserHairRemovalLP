@@ -6,7 +6,7 @@
 
         console.log("DKI: locId =", locId);
 
-        const defaultCityName = 'London';
+        const defaultCityName = 'Marylebone';
         const hasLocations = (typeof LOCATIONS !== 'undefined');
         const cityName = (locId && hasLocations && LOCATIONS[locId]) ? LOCATIONS[locId] : defaultCityName;
         if (!locId) {
